@@ -29,8 +29,17 @@ public class UsersController{
 
     }
 
+//    @PostMapping("/insert_user")
+//    public ResponseEntity<String> createUser(@RequestBody CreateUserDTO user){
+//
+//        String ss = userService.insertUser(user);
+//        return new ResponseEntity<>(ss, HttpStatus.CREATED);
+//    }
+
     @PostMapping("/insert_user")
-    public ResponseEntity<String> createUser(@RequestBody CreateUserDTO user){
+    public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String email){
+
+        CreateUserDTO user = new CreateUserDTO(username, email);
 
         String ss = userService.insertUser(user);
         return new ResponseEntity<>(ss, HttpStatus.CREATED);
